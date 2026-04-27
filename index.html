@@ -1,0 +1,1563 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Patundshmëri Invest — Premium Real Estate Investment</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=DM+Sans:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+:root{
+  --gold:#c9a84c;
+  --gold2:#e8cc7a;
+  --gold3:#a07830;
+  --goldf:rgba(201,168,76,0.12);
+  --bg:#07070a;
+  --bg2:#0d0d12;
+  --bg3:#131318;
+  --bg4:#1a1a22;
+  --bg5:#222230;
+  --w:#f5f3ee;
+  --w2:#d8d4cc;
+  --g:#7a7870;
+  --g2:#4a4845;
+  --serif:'Playfair Display',Georgia,serif;
+  --sans:'DM Sans',system-ui,sans-serif;
+  --ease:cubic-bezier(.25,.46,.45,.94);
+  --spring:cubic-bezier(.34,1.56,.64,1);
+}
+html{scroll-behavior:smooth;font-size:16px}
+body{background:var(--bg);color:var(--w);font-family:var(--sans);overflow-x:hidden;line-height:1.6}
+img{display:block;max-width:100%}
+a{text-decoration:none;color:inherit}
+button{font-family:var(--sans);cursor:pointer}
+::-webkit-scrollbar{width:2px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--gold3)}
+
+/* ── LOADER ─────────────────────────────────────────────── */
+#loader{position:fixed;inset:0;z-index:9999;background:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px;transition:opacity .6s var(--ease),transform .6s var(--ease)}
+#loader.out{opacity:0;transform:scale(1.04);pointer-events:none}
+.ld-logo{font-family:var(--serif);font-size:clamp(18px,4vw,26px);font-weight:400;letter-spacing:.12em;color:var(--w)}
+.ld-logo span{color:var(--gold)}
+.ld-progress{width:min(220px,60vw);height:1px;background:rgba(201,168,76,.15);position:relative;overflow:hidden}
+.ld-bar{position:absolute;left:0;top:0;height:100%;background:var(--gold);width:0%;transition:width .1s linear}
+.ld-num{font-size:11px;font-weight:300;letter-spacing:.3em;color:var(--g)}
+
+/* ── NAV ─────────────────────────────────────────────────── */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:clamp(16px,3vw,28px) clamp(20px,5vw,60px);display:flex;align-items:center;justify-content:space-between;transition:all .5s var(--ease)}
+nav.solid{background:rgba(7,7,10,.94);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid rgba(201,168,76,.07)}
+.nav-logo{font-family:var(--serif);font-size:clamp(16px,3vw,21px);font-weight:400;letter-spacing:.06em;flex-shrink:0}
+.nav-logo span{color:var(--gold)}
+.nav-links{display:flex;gap:clamp(20px,3vw,40px);list-style:none}
+.nav-links a{font-size:11px;font-weight:300;letter-spacing:.2em;text-transform:uppercase;color:var(--g);transition:color .3s}
+.nav-links a:hover{color:var(--gold)}
+.nav-actions{display:flex;align-items:center;gap:12px}
+.nav-cta{font-size:11px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--bg);background:var(--gold);padding:10px 22px;transition:all .3s;white-space:nowrap}
+.nav-cta:hover{background:var(--gold2)}
+.nav-burger{display:none;flex-direction:column;gap:5px;padding:8px;cursor:pointer;z-index:201}
+.nav-burger span{width:24px;height:1px;background:var(--w);transition:all .4s var(--ease);display:block}
+.nav-burger.open span:nth-child(1){transform:rotate(45deg) translate(4px,4px)}
+.nav-burger.open span:nth-child(2){opacity:0;transform:scaleX(0)}
+.nav-burger.open span:nth-child(3){transform:rotate(-45deg) translate(4px,-4px)}
+
+/* Mobile Menu */
+.mobile-menu{position:fixed;inset:0;z-index:199;background:var(--bg);display:flex;flex-direction:column;justify-content:center;padding:80px 40px 60px;transform:translateX(100%);transition:transform .5s var(--ease)}
+.mobile-menu.open{transform:translateX(0)}
+.mob-link{font-family:var(--serif);font-size:clamp(28px,8vw,42px);font-weight:400;color:var(--w);display:block;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.05);opacity:0;transform:translateX(40px);transition:all .5s var(--ease)}
+.mobile-menu.open .mob-link{opacity:1;transform:translateX(0)}
+.mobile-menu.open .mob-link:nth-child(1){transition-delay:.1s}
+.mobile-menu.open .mob-link:nth-child(2){transition-delay:.2s}
+.mobile-menu.open .mob-link:nth-child(3){transition-delay:.3s}
+.mobile-menu.open .mob-link:nth-child(4){transition-delay:.4s}
+.mobile-menu.open .mob-link:nth-child(5){transition-delay:.5s}
+.mob-link span{color:var(--gold);font-size:.5em;vertical-align:middle;margin-right:12px}
+.mob-footer{margin-top:40px;font-size:12px;font-weight:300;color:var(--g);letter-spacing:.15em}
+
+@media(max-width:768px){
+  .nav-links{display:none}
+  .nav-cta{display:none}
+  .nav-burger{display:flex}
+}
+
+/* ── HERO ────────────────────────────────────────────────── */
+#hero{position:relative;height:100svh;min-height:600px;overflow:hidden;display:flex;align-items:flex-end;padding-bottom:clamp(48px,8vh,100px)}
+.hero-slides{position:absolute;inset:0;z-index:0}
+.hero-slide{position:absolute;inset:0;opacity:0;transition:opacity 1.6s var(--ease)}
+.hero-slide.active{opacity:1}
+.hero-slide img{width:100%;height:100%;object-fit:cover;transform:scale(1.06);transition:transform 8s linear}
+.hero-slide.active img{transform:scale(1)}
+.hero-grad{position:absolute;inset:0;background:linear-gradient(to top,rgba(7,7,10,1) 0%,rgba(7,7,10,.7) 30%,rgba(7,7,10,.25) 70%,rgba(7,7,10,.4) 100%)}
+.hero-noise{position:absolute;inset:0;opacity:.025;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:200px}
+.hero-content{position:relative;z-index:2;padding:0 clamp(20px,6vw,80px);width:100%;max-width:1200px;margin:0 auto}
+.hero-eyebrow{font-size:clamp(9px,1.5vw,11px);font-weight:400;letter-spacing:.4em;text-transform:uppercase;color:var(--gold);margin-bottom:clamp(16px,2.5vw,24px);display:flex;align-items:center;gap:16px;opacity:0;animation:fup .9s .3s forwards}
+.hero-eyebrow::before{content:'';width:32px;height:1px;background:var(--gold)}
+.hero-h1{font-family:var(--serif);font-size:clamp(38px,7.5vw,96px);font-weight:400;line-height:1.01;letter-spacing:-.02em;margin-bottom:clamp(16px,2.5vw,28px);opacity:0;animation:fup .9s .55s forwards}
+.hero-h1 em{font-style:italic;color:var(--gold)}
+.hero-sub{font-size:clamp(13px,1.6vw,16px);font-weight:300;color:rgba(245,243,238,.6);max-width:520px;line-height:1.75;margin-bottom:clamp(28px,4vw,48px);opacity:0;animation:fup .9s .75s forwards}
+.hero-btns{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:clamp(32px,5vw,64px);opacity:0;animation:fup .9s .95s forwards}
+.btn-primary{font-size:11px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--bg);background:var(--gold);padding:clamp(13px,2vw,17px) clamp(24px,4vw,40px);border:none;transition:all .35s var(--ease);display:inline-flex;align-items:center;gap:10px}
+.btn-primary:hover{background:var(--gold2);transform:translateY(-2px)}
+.btn-primary svg{width:14px;height:14px;stroke:var(--bg);fill:none;stroke-width:2;transition:transform .3s}
+.btn-primary:hover svg{transform:translateX(4px)}
+.btn-secondary{font-size:11px;font-weight:400;letter-spacing:.2em;text-transform:uppercase;color:var(--w);background:transparent;padding:clamp(13px,2vw,17px) clamp(24px,4vw,40px);border:1px solid rgba(245,243,238,.2);transition:all .35s var(--ease)}
+.btn-secondary:hover{border-color:var(--gold);color:var(--gold)}
+.hero-stats{display:flex;gap:clamp(20px,4vw,48px);opacity:0;animation:fup .9s 1.15s forwards}
+.hero-stat-num{font-family:var(--serif);font-size:clamp(22px,3.5vw,34px);font-weight:400;color:var(--gold);line-height:1}
+.hero-stat-label{font-size:10px;font-weight:300;letter-spacing:.18em;text-transform:uppercase;color:var(--g);margin-top:4px}
+.hero-stat-div{width:1px;height:40px;background:rgba(255,255,255,.08);align-self:center}
+.hero-dots{position:absolute;right:clamp(20px,4vw,60px);bottom:clamp(48px,8vh,100px);z-index:3;display:flex;flex-direction:column;gap:8px}
+.hero-dot{width:2px;height:20px;background:rgba(255,255,255,.2);cursor:pointer;transition:all .4s;border:none;padding:0}
+.hero-dot.active{background:var(--gold);height:36px}
+.hero-slide-counter{position:absolute;left:clamp(20px,6vw,80px);bottom:clamp(16px,3vh,30px);z-index:3;font-size:11px;font-weight:300;letter-spacing:.2em;color:var(--g)}
+.hero-slide-counter span{color:var(--gold)}
+
+/* ── TICKER ──────────────────────────────────────────────── */
+.ticker{padding:14px 0;background:var(--gold);overflow:hidden}
+.ticker-track{display:flex;gap:0;animation:tick 25s linear infinite;white-space:nowrap}
+.ticker-item{font-size:11px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--bg);padding:0 40px;display:flex;align-items:center;gap:14px;flex-shrink:0}
+.ticker-item::after{content:'◆';font-size:6px}
+
+/* ── STATS ROW ───────────────────────────────────────────── */
+.stats-row{background:var(--bg2);border-bottom:1px solid rgba(201,168,76,.07);display:grid;grid-template-columns:repeat(4,1fr)}
+.stat-cell{padding:clamp(32px,5vw,60px) clamp(20px,3vw,40px);text-align:center;position:relative;border-right:1px solid rgba(201,168,76,.07)}
+.stat-cell:last-child{border-right:none}
+.stat-n{font-family:var(--serif);font-size:clamp(32px,4.5vw,56px);font-weight:400;color:var(--gold);line-height:1;margin-bottom:6px}
+.stat-l{font-size:10px;font-weight:300;letter-spacing:.22em;text-transform:uppercase;color:var(--g)}
+
+/* ── SECTION COMMON ──────────────────────────────────────── */
+.sec{padding:clamp(70px,10vh,130px) clamp(20px,6vw,80px)}
+.sec-max{max-width:1200px;margin:0 auto}
+.sec-tag{font-size:10px;font-weight:400;letter-spacing:.4em;text-transform:uppercase;color:var(--gold);margin-bottom:18px;display:flex;align-items:center;gap:14px}
+.sec-tag::before{content:'';width:24px;height:1px;background:var(--gold)}
+.sec-h{font-family:var(--serif);font-size:clamp(30px,4.5vw,56px);font-weight:400;line-height:1.08;letter-spacing:-.01em;margin-bottom:16px}
+.sec-h em{font-style:italic;color:var(--gold)}
+.sec-sub{font-size:clamp(13px,1.5vw,15px);font-weight:300;color:var(--g);line-height:1.75;max-width:480px}
+
+/* ── FEATURED PROPERTIES ─────────────────────────────────── */
+#properties{background:var(--bg)}
+.prop-intro{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:clamp(36px,5vw,60px)}
+.prop-filter-tabs{display:flex;gap:4px;flex-wrap:wrap}
+.tab-btn{font-size:10px;font-weight:400;letter-spacing:.18em;text-transform:uppercase;padding:9px 18px;border:1px solid rgba(201,168,76,.15);background:transparent;color:var(--g);transition:all .3s;cursor:pointer}
+.tab-btn.active,.tab-btn:hover{background:var(--goldf);border-color:var(--gold);color:var(--gold)}
+/* Main grid */
+.prop-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:rgba(201,168,76,.06)}
+.prop-card{background:var(--bg2);overflow:hidden;position:relative;cursor:pointer}
+.prop-card.large{grid-column:span 1;grid-row:span 2}
+.prop-img-wrap{overflow:hidden;position:relative}
+.prop-card.large .prop-img-wrap{height:560px}
+.prop-card:not(.large) .prop-img-wrap{height:260px}
+.prop-img-wrap img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease)}
+.prop-card:hover .prop-img-wrap img{transform:scale(1.07)}
+.prop-img-wrap::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(7,7,10,.88) 0%,rgba(7,7,10,.1) 55%)}
+.prop-badge{position:absolute;top:16px;left:16px;font-size:9px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--bg);background:var(--gold);padding:5px 12px;z-index:2}
+.prop-badge.new{background:#3aaa6e;color:#fff}
+.prop-badge.sold{background:#888;color:#fff}
+.prop-fav{position:absolute;top:14px;right:14px;width:32px;height:32px;background:rgba(7,7,10,.6);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.1);border-radius:50%;display:flex;align-items:center;justify-content:center;z-index:2;cursor:pointer;transition:all .3s}
+.prop-fav:hover,.prop-fav.active{background:var(--goldf);border-color:var(--gold)}
+.prop-fav svg{width:14px;height:14px;stroke:var(--w2);fill:none;stroke-width:1.5;transition:all .3s}
+.prop-fav.active svg{stroke:var(--gold);fill:var(--gold)}
+.prop-body{padding:clamp(16px,2.5vw,24px)}
+.prop-loc{font-size:9px;font-weight:400;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:8px;display:flex;align-items:center;gap:6px}
+.prop-loc svg{width:10px;height:10px;stroke:var(--gold);fill:none;stroke-width:2;flex-shrink:0}
+.prop-name{font-family:var(--serif);font-size:clamp(16px,2vw,20px);font-weight:400;margin-bottom:14px;line-height:1.2}
+.prop-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.prop-price{font-size:clamp(17px,2.2vw,22px);font-weight:300;color:var(--w)}
+.prop-roi{font-size:11px;font-weight:500;color:var(--gold);background:var(--goldf);padding:4px 10px;border:1px solid rgba(201,168,76,.2)}
+.prop-features{display:flex;gap:14px;padding-top:12px;border-top:1px solid rgba(255,255,255,.05);flex-wrap:wrap}
+.prop-feat{font-size:10px;font-weight:300;color:var(--g);display:flex;align-items:center;gap:4px}
+.prop-feat svg{width:11px;height:11px;stroke:var(--g2);fill:none;stroke-width:1.5}
+.prop-overlay{position:absolute;inset:0;background:var(--bg2);display:flex;flex-direction:column;justify-content:flex-end;padding:24px;opacity:0;transition:opacity .4s var(--ease);z-index:3}
+.prop-card:hover .prop-overlay{opacity:1}
+.prop-overlay-btn{font-size:10px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--bg);background:var(--gold);padding:12px 20px;border:none;cursor:pointer;transition:all .3s;margin-top:12px;width:100%;text-align:center}
+.view-all-wrap{text-align:center;margin-top:clamp(36px,5vw,56px)}
+
+/* ── SEARCH FILTER ───────────────────────────────────────── */
+#search{background:var(--bg3)}
+.search-box{background:var(--bg4);border:1px solid rgba(201,168,76,.1);padding:clamp(28px,4vw,48px)}
+.search-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px;margin-bottom:24px}
+.sf-group label{font-size:9px;font-weight:400;letter-spacing:.3em;text-transform:uppercase;color:var(--g);display:block;margin-bottom:9px}
+.sf-group select,.sf-group input{width:100%;background:var(--bg);border:1px solid rgba(201,168,76,.1);color:var(--w);padding:12px 14px;font-family:var(--sans);font-size:12px;font-weight:300;outline:none;transition:border-color .3s;appearance:none}
+.sf-group select:focus,.sf-group input:focus{border-color:var(--gold)}
+.sf-btn{background:var(--gold);color:var(--bg);border:none;padding:14px 40px;font-family:var(--sans);font-size:11px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;cursor:pointer;transition:all .3s}
+.sf-btn:hover{background:var(--gold2)}
+.sf-results{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1px;background:rgba(201,168,76,.06);margin-top:40px}
+
+/* ── ROI CALCULATOR ──────────────────────────────────────── */
+#calculator{background:var(--bg)}
+.calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,5vw,80px);align-items:start;margin-top:clamp(36px,5vw,60px)}
+.calc-inputs{display:flex;flex-direction:column;gap:24px}
+.calc-row label{font-size:9px;font-weight:400;letter-spacing:.3em;text-transform:uppercase;color:var(--g);display:block;margin-bottom:10px}
+.calc-row input[type=range]{width:100%;-webkit-appearance:none;height:2px;background:rgba(201,168,76,.2);outline:none;border-radius:0}
+.calc-row input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;background:var(--gold);border-radius:50%;cursor:pointer;border:2px solid var(--bg)}
+.calc-row input[type=range]::-moz-range-thumb{width:18px;height:18px;background:var(--gold);border-radius:50%;cursor:pointer;border:2px solid var(--bg)}
+.calc-val{font-family:var(--serif);font-size:28px;font-weight:400;color:var(--gold);margin-bottom:12px}
+.calc-results{background:var(--bg3);border:1px solid rgba(201,168,76,.1);padding:clamp(24px,4vw,40px)}
+.calc-result-main{font-family:var(--serif);font-size:clamp(42px,6vw,72px);font-weight:400;color:var(--gold);line-height:1;margin-bottom:6px}
+.calc-result-label{font-size:10px;font-weight:300;letter-spacing:.22em;text-transform:uppercase;color:var(--g);margin-bottom:32px}
+.calc-breakdown{display:flex;flex-direction:column;gap:16px}
+.calc-br-row{display:flex;justify-content:space-between;align-items:center;padding-bottom:14px;border-bottom:1px solid rgba(255,255,255,.05)}
+.calc-br-label{font-size:12px;font-weight:300;color:var(--g)}
+.calc-br-val{font-size:13px;font-weight:400;color:var(--w)}
+.calc-cta{margin-top:32px;display:block;width:100%;text-align:center;background:var(--gold);color:var(--bg);font-size:11px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;padding:16px;border:none;cursor:pointer;transition:all .3s}
+.calc-cta:hover{background:var(--gold2)}
+
+/* ── INVESTMENT ──────────────────────────────────────────── */
+#investment{background:var(--bg2)}
+.inv-hero{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,100px);align-items:center;margin-bottom:clamp(60px,8vw,100px)}
+.inv-numbers{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(201,168,76,.06)}
+.inv-num-cell{background:var(--bg3);padding:clamp(24px,3.5vw,40px);transition:background .3s}
+.inv-num-cell:hover{background:var(--bg4)}
+.inv-big{font-family:var(--serif);font-size:clamp(38px,5vw,62px);font-weight:400;color:var(--gold);line-height:1;margin-bottom:6px}
+.inv-lbl{font-size:10px;font-weight:300;letter-spacing:.2em;text-transform:uppercase;color:var(--g);margin-bottom:12px}
+.inv-desc{font-size:12px;font-weight:300;color:rgba(245,243,238,.45);line-height:1.65}
+.inv-prog{height:1px;background:rgba(201,168,76,.12);margin-top:20px;overflow:hidden}
+.inv-prog-fill{height:100%;background:var(--gold);width:0;transition:width 1.8s var(--ease)}
+/* Chart bars */
+.chart-wrap{background:var(--bg4);border:1px solid rgba(201,168,76,.08);padding:clamp(20px,3vw,36px);margin-top:32px}
+.chart-title{font-size:10px;font-weight:300;letter-spacing:.22em;text-transform:uppercase;color:var(--g);margin-bottom:24px}
+.chart-bars{display:flex;align-items:flex-end;gap:8px;height:120px}
+.c-bar{flex:1;border-radius:0;position:relative;cursor:pointer;transition:all .3s;min-width:0}
+.c-bar::after{content:attr(data-year);position:absolute;bottom:-22px;left:50%;transform:translateX(-50%);font-size:9px;color:var(--g2);white-space:nowrap}
+.c-bar:hover{filter:brightness(1.3)}
+.c-bar-tip{position:absolute;top:-32px;left:50%;transform:translateX(-50%);background:var(--bg);border:1px solid var(--gold);padding:3px 8px;font-size:10px;color:var(--gold);white-space:nowrap;opacity:0;transition:opacity .2s;pointer-events:none}
+.c-bar:hover .c-bar-tip{opacity:1}
+
+/* ── PROCESS ─────────────────────────────────────────────── */
+#process{background:var(--bg);position:relative;overflow:hidden}
+.process-line{position:absolute;left:50%;top:0;bottom:0;width:1px;background:linear-gradient(to bottom,transparent,rgba(201,168,76,.15),transparent);transform:translateX(-50%)}
+.process-steps{display:flex;flex-direction:column;gap:0;margin-top:clamp(40px,6vw,80px);position:relative;z-index:1}
+.proc-step{display:grid;grid-template-columns:1fr 80px 1fr;align-items:center;gap:0;min-height:120px}
+.proc-step:nth-child(even) .proc-left{order:3}
+.proc-step:nth-child(even) .proc-right{order:1;text-align:right}
+.proc-step:nth-child(even) .proc-center{order:2}
+.proc-left,.proc-right{padding:clamp(24px,3vw,40px) clamp(20px,4vw,60px)}
+.proc-center{display:flex;flex-direction:column;align-items:center;gap:0;position:relative}
+.proc-num{width:56px;height:56px;border:1px solid rgba(201,168,76,.25);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:20px;font-weight:400;color:var(--gold);flex-shrink:0;background:var(--bg);position:relative;z-index:1;transition:all .4s}
+.proc-step:hover .proc-num{background:var(--goldf);border-color:var(--gold)}
+.proc-connector{width:1px;flex:1;background:rgba(201,168,76,.12);min-height:40px}
+.proc-h{font-family:var(--serif);font-size:clamp(18px,2.2vw,24px);font-weight:400;margin-bottom:10px}
+.proc-p{font-size:13px;font-weight:300;color:var(--g);line-height:1.7}
+
+/* ── TEAM ─────────────────────────────────────────────────── */
+#team{background:var(--bg3)}
+.team-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1px;background:rgba(201,168,76,.06);margin-top:clamp(36px,5vw,60px)}
+.team-card{background:var(--bg2);overflow:hidden;cursor:pointer;position:relative}
+.team-img{width:100%;height:280px;object-fit:cover;filter:grayscale(40%);transition:filter .6s var(--ease),transform .6s var(--ease)}
+.team-card:hover .team-img{filter:grayscale(0%);transform:scale(1.04)}
+.team-body{padding:20px}
+.team-name{font-family:var(--serif);font-size:18px;font-weight:400;margin-bottom:4px}
+.team-role{font-size:10px;font-weight:300;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+.team-bio{font-size:12px;font-weight:300;color:var(--g);margin-top:10px;line-height:1.6;display:none}
+.team-card:hover .team-bio{display:block}
+
+/* ── TESTIMONIALS ────────────────────────────────────────── */
+#testimonials{background:var(--bg2);overflow:hidden}
+.testi-track-wrap{overflow:hidden;margin-top:clamp(36px,5vw,60px);position:relative}
+.testi-track{display:flex;gap:20px;transition:transform .7s var(--ease)}
+.testi-card{background:var(--bg3);border:1px solid rgba(201,168,76,.08);padding:clamp(24px,3.5vw,44px);flex:0 0 calc(33.333% - 14px);min-width:280px;position:relative;transition:border-color .3s}
+.testi-card:hover{border-color:rgba(201,168,76,.25)}
+.testi-stars{display:flex;gap:3px;margin-bottom:20px}
+.testi-stars span{color:var(--gold);font-size:12px}
+.testi-q{font-family:var(--serif);font-size:clamp(15px,1.8vw,18px);font-style:italic;font-weight:400;line-height:1.65;color:rgba(245,243,238,.82);margin-bottom:28px}
+.testi-divider{width:28px;height:1px;background:var(--gold);margin-bottom:20px}
+.testi-author{font-size:12px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--w);margin-bottom:3px}
+.testi-role{font-size:11px;font-weight:300;color:var(--g)}
+.testi-roi-badge{position:absolute;top:clamp(16px,2.5vw,28px);right:clamp(16px,2.5vw,28px);font-size:10px;font-weight:500;color:var(--gold);background:var(--goldf);border:1px solid rgba(201,168,76,.2);padding:4px 10px}
+.testi-nav{display:flex;gap:10px;margin-top:clamp(28px,4vw,48px)}
+.testi-nav-btn{width:44px;height:44px;border:1px solid rgba(201,168,76,.2);background:transparent;color:var(--w);font-size:18px;cursor:pointer;transition:all .3s;display:flex;align-items:center;justify-content:center}
+.testi-nav-btn:hover{background:var(--goldf);border-color:var(--gold)}
+.testi-progress{flex:1;height:1px;background:rgba(201,168,76,.1);align-self:center;margin-left:16px;overflow:hidden}
+.testi-progress-fill{height:100%;background:var(--gold);width:0%;transition:width .7s linear}
+
+/* ── MAP ─────────────────────────────────────────────────── */
+#map-section{background:var(--bg)}
+.map-wrap{position:relative;height:clamp(360px,50vh,520px);background:var(--bg3);overflow:hidden;border:1px solid rgba(201,168,76,.07);margin-top:clamp(36px,5vw,60px)}
+.map-grid-bg{position:absolute;inset:0;background-image:linear-gradient(rgba(201,168,76,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,.04) 1px,transparent 1px);background-size:clamp(30px,4vw,50px) clamp(30px,4vw,50px)}
+.map-pin{position:absolute;transform:translate(-50%,-100%);cursor:pointer;z-index:4;transition:transform .25s var(--spring)}
+.map-pin:hover{transform:translate(-50%,-100%) scale(1.2)}
+.pin-bubble{background:rgba(13,13,18,.92);backdrop-filter:blur(12px);border:1px solid rgba(201,168,76,.3);padding:8px 14px;white-space:nowrap;margin-bottom:4px;transform-origin:bottom center}
+.pin-bubble strong{font-size:12px;font-weight:500;color:var(--w);display:block;margin-bottom:1px}
+.pin-bubble span{font-size:10px;color:var(--gold)}
+.pin-stem{width:1px;height:16px;background:var(--gold);margin:0 auto;opacity:.7}
+.pin-dot{width:10px;height:10px;border-radius:50%;background:var(--gold);border:2px solid var(--bg3);margin:0 auto;box-shadow:0 0 12px rgba(201,168,76,.5)}
+.map-legend{position:absolute;bottom:20px;left:20px;background:rgba(7,7,10,.85);backdrop-filter:blur(12px);border:1px solid rgba(201,168,76,.12);padding:16px 20px;display:flex;flex-direction:column;gap:8px}
+.legend-item{display:flex;align-items:center;gap:8px;font-size:10px;font-weight:300;letter-spacing:.1em;color:var(--g2)}
+.legend-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.map-stat-badge{position:absolute;top:20px;right:20px;background:rgba(7,7,10,.85);backdrop-filter:blur(12px);border:1px solid rgba(201,168,76,.2);padding:16px 24px;text-align:center}
+.map-stat-badge .n{font-family:var(--serif);font-size:30px;font-weight:400;color:var(--gold)}
+.map-stat-badge .l{font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--g);margin-top:3px}
+
+/* ── MEDIA GALLERY ───────────────────────────────────────── */
+#gallery{background:var(--bg2)}
+.gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:auto auto;gap:4px;margin-top:clamp(36px,5vw,60px)}
+.gallery-item{overflow:hidden;position:relative;cursor:pointer}
+.gallery-item:first-child{grid-column:span 2;grid-row:span 2}
+.gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform .7s var(--ease);min-height:160px}
+.gallery-item:first-child img{min-height:320px}
+.gallery-item:hover img{transform:scale(1.05)}
+.gallery-item::after{content:'';position:absolute;inset:0;background:rgba(7,7,10,.0);transition:background .3s}
+.gallery-item:hover::after{background:rgba(7,7,10,.25)}
+.gallery-plus{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .3s;z-index:2}
+.gallery-item:hover .gallery-plus{opacity:1}
+.gallery-plus span{font-size:11px;font-weight:400;letter-spacing:.2em;text-transform:uppercase;color:var(--w);background:rgba(7,7,10,.7);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.15);padding:10px 18px}
+
+/* ── WHY US ──────────────────────────────────────────────── */
+#why{background:var(--bg)}
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(201,168,76,.06);margin-top:clamp(36px,5vw,60px)}
+.why-card{background:var(--bg2);padding:clamp(24px,3.5vw,44px);transition:background .4s}
+.why-card:hover{background:var(--bg3)}
+.why-icon{width:44px;height:44px;border:1px solid rgba(201,168,76,.2);display:flex;align-items:center;justify-content:center;margin-bottom:20px;transition:all .4s}
+.why-card:hover .why-icon{border-color:var(--gold);background:var(--goldf)}
+.why-icon svg{width:20px;height:20px;stroke:var(--gold);fill:none;stroke-width:1.5}
+.why-h{font-family:var(--serif);font-size:clamp(16px,1.8vw,20px);font-weight:400;margin-bottom:12px;line-height:1.2}
+.why-p{font-size:12px;font-weight:300;color:var(--g);line-height:1.7}
+.why-link{font-size:10px;font-weight:400;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-top:16px;display:flex;align-items:center;gap:6px;opacity:0;transition:opacity .3s}
+.why-card:hover .why-link{opacity:1}
+.why-link svg{width:12px;height:12px;stroke:var(--gold);fill:none;stroke-width:2;transition:transform .3s}
+.why-card:hover .why-link svg{transform:translateX(4px)}
+
+/* ── NEWS ────────────────────────────────────────────────── */
+#news{background:var(--bg3)}
+.news-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:rgba(201,168,76,.06);margin-top:clamp(36px,5vw,60px)}
+.news-card{background:var(--bg2);overflow:hidden;cursor:pointer}
+.news-img{width:100%;height:200px;object-fit:cover;transition:transform .7s var(--ease)}
+.news-card:hover .news-img{transform:scale(1.05)}
+.news-body{padding:clamp(18px,2.5vw,28px)}
+.news-cat{font-size:9px;font-weight:400;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+.news-h{font-family:var(--serif);font-size:clamp(16px,1.8vw,20px);font-weight:400;line-height:1.25;margin-bottom:12px;transition:color .3s}
+.news-card:hover .news-h{color:var(--gold)}
+.news-excerpt{font-size:12px;font-weight:300;color:var(--g);line-height:1.65;margin-bottom:16px}
+.news-meta{font-size:10px;font-weight:300;color:var(--g2);letter-spacing:.1em}
+
+/* ── CTA ─────────────────────────────────────────────────── */
+#cta{background:var(--bg2);position:relative;overflow:hidden;text-align:center;padding:clamp(80px,12vh,160px) clamp(20px,6vw,80px)}
+.cta-glow{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:min(600px,90vw);height:min(600px,90vw);background:radial-gradient(ellipse,rgba(201,168,76,.07) 0%,transparent 70%);pointer-events:none}
+.cta-border{width:1px;height:clamp(50px,8vh,80px);background:linear-gradient(to bottom,transparent,var(--gold));margin:0 auto clamp(32px,5vw,56px)}
+.cta-h{font-family:var(--serif);font-size:clamp(34px,6vw,76px);font-weight:400;line-height:1.05;margin-bottom:20px}
+.cta-h em{font-style:italic;color:var(--gold)}
+.cta-sub{font-size:clamp(13px,1.5vw,16px);font-weight:300;color:var(--g);margin-bottom:clamp(36px,5vw,52px);max-width:520px;margin-left:auto;margin-right:auto;line-height:1.75}
+.cta-trust{display:flex;justify-content:center;gap:clamp(24px,4vw,56px);flex-wrap:wrap;margin-top:clamp(36px,5vw,56px);padding-top:clamp(28px,4vw,48px);border-top:1px solid rgba(255,255,255,.05)}
+.cta-trust-item{text-align:center}
+.cta-trust-n{font-family:var(--serif);font-size:clamp(22px,3vw,32px);font-weight:400;color:var(--gold)}
+.cta-trust-l{font-size:9px;font-weight:300;letter-spacing:.22em;text-transform:uppercase;color:var(--g);margin-top:4px}
+
+/* ── CONTACT ─────────────────────────────────────────────── */
+#contact{background:var(--bg)}
+.contact-wrap{display:grid;grid-template-columns:1fr 1.4fr;gap:clamp(40px,7vw,100px);margin-top:clamp(36px,5vw,60px)}
+.contact-left h3{font-family:var(--serif);font-size:clamp(24px,3vw,36px);font-weight:400;line-height:1.2;margin-bottom:16px}
+.contact-left p{font-size:13px;font-weight:300;color:var(--g);line-height:1.75;margin-bottom:36px}
+.contact-detail{display:flex;gap:14px;align-items:flex-start;margin-bottom:18px}
+.c-icon{width:36px;height:36px;border:1px solid rgba(201,168,76,.15);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.c-icon svg{width:14px;height:14px;stroke:var(--gold);fill:none;stroke-width:1.5}
+.c-detail-label{font-size:9px;font-weight:400;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:3px}
+.c-detail-val{font-size:13px;font-weight:300;color:var(--w2)}
+.contact-hours{background:var(--bg3);border:1px solid rgba(201,168,76,.08);padding:20px;margin-top:32px}
+.hours-title{font-size:9px;font-weight:400;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
+.hours-row{display:flex;justify-content:space-between;font-size:12px;font-weight:300;color:var(--g);padding:6px 0;border-bottom:1px solid rgba(255,255,255,.03)}
+.hours-row:last-child{border-bottom:none}
+/* Form */
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
+.fg{margin-bottom:16px}
+.fg label{font-size:9px;font-weight:400;letter-spacing:.28em;text-transform:uppercase;color:var(--g);display:block;margin-bottom:9px}
+.fg input,.fg select,.fg textarea{width:100%;background:var(--bg2);border:1px solid rgba(201,168,76,.1);color:var(--w);padding:13px 16px;font-family:var(--sans);font-size:13px;font-weight:300;outline:none;transition:border-color .3s;resize:none;-webkit-appearance:none}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--gold)}
+.fg textarea{min-height:110px}
+.form-submit{width:100%;background:var(--gold);color:var(--bg);border:none;padding:17px;font-family:var(--sans);font-size:11px;font-weight:600;letter-spacing:.25em;text-transform:uppercase;cursor:pointer;transition:all .3s;display:flex;align-items:center;justify-content:center;gap:10px}
+.form-submit:hover{background:var(--gold2)}
+.form-submit svg{width:14px;height:14px;stroke:var(--bg);fill:none;stroke-width:2;transition:transform .3s}
+.form-submit:hover svg{transform:translateX(4px)}
+.form-success{display:none;text-align:center;padding:40px;background:var(--bg3);border:1px solid rgba(201,168,76,.2)}
+.form-success h4{font-family:var(--serif);font-size:24px;font-weight:400;color:var(--gold);margin-bottom:8px}
+.form-success p{font-size:13px;font-weight:300;color:var(--g)}
+
+/* ── FOOTER ──────────────────────────────────────────────── */
+footer{background:var(--bg2);border-top:1px solid rgba(201,168,76,.07)}
+.footer-main{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:clamp(30px,5vw,60px);padding:clamp(50px,7vw,80px) clamp(20px,6vw,80px)}
+.footer-brand-name{font-family:var(--serif);font-size:20px;font-weight:400;margin-bottom:14px}
+.footer-brand-name span{color:var(--gold)}
+.footer-desc{font-size:12px;font-weight:300;color:var(--g);line-height:1.75;max-width:260px;margin-bottom:24px}
+.footer-socials{display:flex;gap:10px}
+.soc-btn{width:34px;height:34px;border:1px solid rgba(201,168,76,.15);display:flex;align-items:center;justify-content:center;transition:all .3s;cursor:pointer}
+.soc-btn:hover{border-color:var(--gold);background:var(--goldf)}
+.soc-btn svg{width:14px;height:14px;stroke:var(--g);fill:none;stroke-width:1.5;transition:stroke .3s}
+.soc-btn:hover svg{stroke:var(--gold)}
+.footer-col h5{font-size:9px;font-weight:500;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:22px}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:11px}
+.footer-col ul li a{font-size:12px;font-weight:300;color:var(--g);text-decoration:none;transition:color .3s}
+.footer-col ul li a:hover{color:var(--w)}
+.footer-bottom{border-top:1px solid rgba(201,168,76,.06);padding:20px clamp(20px,6vw,80px);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.footer-copy{font-size:11px;font-weight:300;color:var(--g2)}
+.footer-legal{display:flex;gap:20px;flex-wrap:wrap}
+.footer-legal a{font-size:11px;font-weight:300;color:var(--g2);text-decoration:none;transition:color .3s}
+.footer-legal a:hover{color:var(--gold)}
+
+/* ── FLOATING CTA MOBILE ─────────────────────────────────── */
+.float-cta{position:fixed;bottom:0;left:0;right:0;z-index:150;background:var(--bg);border-top:1px solid rgba(201,168,76,.12);padding:14px 20px;display:none;justify-content:space-between;align-items:center;gap:12px}
+.float-cta-text{font-size:12px;font-weight:300;color:var(--g);line-height:1.4;flex:1}
+.float-cta-text strong{display:block;color:var(--w);font-weight:500}
+.float-cta-btn{background:var(--gold);color:var(--bg);font-size:11px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;padding:13px 20px;border:none;cursor:pointer;white-space:nowrap;flex-shrink:0}
+@media(max-width:768px){.float-cta{display:flex}}
+
+/* ── ANIMATIONS ──────────────────────────────────────────── */
+@keyframes fup{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+@keyframes tick{to{transform:translateX(-50%)}}
+@keyframes shimmer{0%{background-position:-200% 0}100%{background-position:200% 0}}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .85s var(--ease),transform .85s var(--ease)}
+.reveal.on{opacity:1;transform:none}
+.reveal.d1{transition-delay:.1s}.reveal.d2{transition-delay:.2s}.reveal.d3{transition-delay:.3s}.reveal.d4{transition-delay:.4s}.reveal.d5{transition-delay:.5s}
+
+/* ── RESPONSIVE ──────────────────────────────────────────── */
+@media(max-width:900px){
+  .prop-grid{grid-template-columns:1fr 1fr}
+  .prop-card.large{grid-column:span 2;grid-row:span 1}
+  .prop-card.large .prop-img-wrap{height:320px}
+  .calc-grid{grid-template-columns:1fr}
+  .inv-hero{grid-template-columns:1fr}
+  .inv-numbers{grid-template-columns:1fr 1fr}
+  .proc-step{grid-template-columns:1fr}
+  .proc-step:nth-child(even) .proc-left{order:unset}
+  .proc-step:nth-child(even) .proc-right{order:unset;text-align:left}
+  .proc-step:nth-child(even) .proc-center{order:unset}
+  .proc-center{display:none}
+  .process-line{display:none}
+  .proc-step{border-left:1px solid rgba(201,168,76,.1);padding-left:20px;margin-left:20px;position:relative}
+  .proc-step::before{content:attr(data-step);position:absolute;left:-14px;top:clamp(24px,3vw,40px);width:26px;height:26px;background:var(--bg);border:1px solid rgba(201,168,76,.25);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:13px;color:var(--gold)}
+  .proc-left,.proc-right{padding:clamp(20px,3vw,36px) 20px}
+  .why-grid{grid-template-columns:1fr 1fr}
+  .contact-wrap{grid-template-columns:1fr}
+  .news-grid{grid-template-columns:1fr 1fr}
+  .gallery-grid{grid-template-columns:1fr 1fr}
+  .gallery-item:first-child{grid-column:span 2;grid-row:span 1}
+  .footer-main{grid-template-columns:1fr 1fr}
+  .stats-row{grid-template-columns:1fr 1fr}
+  .stat-cell:nth-child(2){border-right:none}
+  .stat-cell:nth-child(3){border-right:1px solid rgba(201,168,76,.07)}
+  .team-grid{grid-template-columns:1fr 1fr}
+  .testi-card{flex:0 0 calc(50% - 10px)}
+}
+@media(max-width:600px){
+  .hero-stats{gap:clamp(12px,4vw,24px)}
+  .hero-stat-div{display:none}
+  .prop-grid{grid-template-columns:1fr}
+  .prop-card.large{grid-column:span 1}
+  .prop-card.large .prop-img-wrap{height:260px}
+  .inv-numbers{grid-template-columns:1fr}
+  .why-grid{grid-template-columns:1fr}
+  .news-grid{grid-template-columns:1fr}
+  .gallery-grid{grid-template-columns:1fr 1fr}
+  .footer-main{grid-template-columns:1fr}
+  .testi-card{flex:0 0 calc(100% - 0px)}
+  .search-grid{grid-template-columns:1fr 1fr}
+  .form-row{grid-template-columns:1fr}
+  .contact-wrap{grid-template-columns:1fr}
+  .team-grid{grid-template-columns:1fr 1fr}
+  .cta-trust{gap:20px}
+  .stats-row{grid-template-columns:1fr 1fr}
+  .stat-cell{border-right:none}
+  .stat-cell:nth-child(odd){border-right:1px solid rgba(201,168,76,.07)}
+  body{padding-bottom:80px}
+}
+</style>
+</head>
+<body>
+
+<!-- LOADER -->
+<div id="loader">
+  <div class="ld-logo">Patundshmëri<span> Invest</span></div>
+  <div class="ld-progress"><div class="ld-bar" id="ld-bar"></div></div>
+  <div class="ld-num" id="ld-num">0%</div>
+</div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#" class="nav-logo">Patundshmëri<span> Invest</span></a>
+  <ul class="nav-links">
+    <li><a href="#properties">Properties</a></li>
+    <li><a href="#calculator">ROI Calculator</a></li>
+    <li><a href="#investment">Investment</a></li>
+    <li><a href="#why">Why Us</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="nav-actions">
+    <a href="#contact" class="nav-cta">Start Investing</a>
+    <div class="nav-burger" id="burger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mob-menu">
+  <a href="#properties" class="mob-link" onclick="closeMenu()"><span>01</span> Properties</a>
+  <a href="#calculator" class="mob-link" onclick="closeMenu()"><span>02</span> ROI Calculator</a>
+  <a href="#investment" class="mob-link" onclick="closeMenu()"><span>03</span> Investment</a>
+  <a href="#why" class="mob-link" onclick="closeMenu()"><span>04</span> Why Us</a>
+  <a href="#contact" class="mob-link" onclick="closeMenu()"><span>05</span> Contact</a>
+  <div class="mob-footer">© 2025 Patundshmëri Invest · Prishtinë</div>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-slides" id="hero-slides">
+    <!-- Slide 1 -->
+    <div class="hero-slide active">
+      <img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=1600&q=80&auto=format&fit=crop" alt="Luxury Villa Prishtina" loading="eager">
+    </div>
+    <!-- Slide 2 -->
+    <div class="hero-slide">
+      <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1600&q=80&auto=format&fit=crop" alt="Modern Luxury Villa" loading="lazy">
+    </div>
+    <!-- Slide 3 -->
+    <div class="hero-slide">
+      <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1600&q=80&auto=format&fit=crop" alt="Premium Real Estate" loading="lazy">
+    </div>
+    <!-- Slide 4 -->
+    <div class="hero-slide">
+      <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=1600&q=80&auto=format&fit=crop" alt="Luxury Property Investment" loading="lazy">
+    </div>
+  </div>
+  <div class="hero-grad"></div>
+  <div class="hero-noise"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Premium Real Estate Investment · Kosovo & Beyond</div>
+    <h1 class="hero-h1">Where Capital Meets<br><em>Architectural Excellence</em></h1>
+    <p class="hero-sub">Exclusive access to Kosovo's highest-performing real estate portfolios. Transparent returns, verified ownership, institutional discipline — designed for discerning investors.</p>
+    <div class="hero-btns">
+      <a href="#properties" class="btn-primary">Explore Properties <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      <a href="#calculator" class="btn-secondary">Calculate Your ROI</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="hero-stat-num">€240M+</div>
+        <div class="hero-stat-label">Assets Managed</div>
+      </div>
+      <div class="hero-stat-div"></div>
+      <div>
+        <div class="hero-stat-num">14.2%</div>
+        <div class="hero-stat-label">Avg. Annual ROI</div>
+      </div>
+      <div class="hero-stat-div"></div>
+      <div>
+        <div class="hero-stat-num">340+</div>
+        <div class="hero-stat-label">Active Investors</div>
+      </div>
+      <div class="hero-stat-div"></div>
+      <div>
+        <div class="hero-stat-num">8yrs</div>
+        <div class="hero-stat-label">Track Record</div>
+      </div>
+    </div>
+  </div>
+  <!-- Slide nav dots -->
+  <div class="hero-dots" id="hero-dots">
+    <button class="hero-dot active" onclick="goSlide(0)"></button>
+    <button class="hero-dot" onclick="goSlide(1)"></button>
+    <button class="hero-dot" onclick="goSlide(2)"></button>
+    <button class="hero-dot" onclick="goSlide(3)"></button>
+  </div>
+  <div class="hero-slide-counter">
+    <span id="slide-cur">01</span> / <span>04</span>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-track" id="ticker-track">
+    <div class="ticker-item">Premium Real Estate</div>
+    <div class="ticker-item">14.2% Average ROI</div>
+    <div class="ticker-item">€240M+ Managed</div>
+    <div class="ticker-item">340+ Investors</div>
+    <div class="ticker-item">Prishtinë · Prizren · Pejë</div>
+    <div class="ticker-item">8 Years Excellence</div>
+    <div class="ticker-item">Verified Returns</div>
+    <div class="ticker-item">Secure Investment</div>
+    <div class="ticker-item">Premium Real Estate</div>
+    <div class="ticker-item">14.2% Average ROI</div>
+    <div class="ticker-item">€240M+ Managed</div>
+    <div class="ticker-item">340+ Investors</div>
+    <div class="ticker-item">Prishtinë · Prizren · Pejë</div>
+    <div class="ticker-item">8 Years Excellence</div>
+    <div class="ticker-item">Verified Returns</div>
+    <div class="ticker-item">Secure Investment</div>
+  </div>
+</div>
+
+<!-- STATS ROW -->
+<div class="stats-row">
+  <div class="stat-cell reveal">
+    <div class="stat-n" data-count="240" data-suffix="M+">0</div>
+    <div class="stat-l">EUR Assets Under Management</div>
+  </div>
+  <div class="stat-cell reveal d1">
+    <div class="stat-n" data-count="340" data-suffix="+">0</div>
+    <div class="stat-l">Active Global Investors</div>
+  </div>
+  <div class="stat-cell reveal d2">
+    <div class="stat-n" data-count="14" data-suffix=".2%">0</div>
+    <div class="stat-l">Average Annual ROI</div>
+  </div>
+  <div class="stat-cell reveal d3">
+    <div class="stat-n" data-count="98" data-suffix="%">0</div>
+    <div class="stat-l">Client Satisfaction Rate</div>
+  </div>
+</div>
+
+<!-- ── FEATURED PROPERTIES ── -->
+<section id="properties" class="sec">
+  <div class="sec-max">
+    <div class="prop-intro">
+      <div class="reveal">
+        <div class="sec-tag">Featured Portfolio</div>
+        <h2 class="sec-h">Curated for <em>Maximum Return</em></h2>
+      </div>
+      <div class="prop-filter-tabs reveal d2">
+        <button class="tab-btn active" onclick="filterProps(this,'all')">All</button>
+        <button class="tab-btn" onclick="filterProps(this,'residential')">Residential</button>
+        <button class="tab-btn" onclick="filterProps(this,'commercial')">Commercial</button>
+        <button class="tab-btn" onclick="filterProps(this,'villa')">Villas</button>
+      </div>
+    </div>
+    <div class="prop-grid reveal">
+      <!-- Card 1 Large -->
+      <div class="prop-card large" data-type="villa">
+        <div class="prop-img-wrap">
+          <div class="prop-badge">Featured</div>
+          <button class="prop-fav" onclick="toggleFav(this)">
+            <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </button>
+          <img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=900&q=80&auto=format&fit=crop" alt="Capital Villa Prishtina" loading="lazy">
+        </div>
+        <div class="prop-body">
+          <div class="prop-loc"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Prishtinë, Kosovo</div>
+          <div class="prop-name">Capital Villa Residences</div>
+          <div class="prop-row">
+            <div class="prop-price">€2,800,000</div>
+            <div class="prop-roi">ROI 16.4%</div>
+          </div>
+          <div class="prop-features">
+            <div class="prop-feat"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>48 Units</div>
+            <div class="prop-feat"><svg viewBox="0 0 24 24"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4M10 17l5-5-5-5M15 12H3"/></svg>3,200 m²</div>
+            <div class="prop-feat"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Q2 2025</div>
+          </div>
+        </div>
+      </div>
+      <!-- Card 2 -->
+      <div class="prop-card" data-type="villa">
+        <div class="prop-img-wrap">
+          <div class="prop-badge new">New</div>
+          <button class="prop-fav" onclick="toggleFav(this)">
+            <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </button>
+          <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=700&q=80&auto=format&fit=crop" alt="Panorama Villas Prizren" loading="lazy">
+        </div>
+        <div class="prop-body">
+          <div class="prop-loc"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Prizren, Kosovo</div>
+          <div class="prop-name">Panorama Villas Prizren</div>
+          <div class="prop-row">
+            <div class="prop-price">€890,000</div>
+            <div class="prop-roi">ROI 12.8%</div>
+          </div>
+          <div class="prop-features">
+            <div class="prop-feat"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>12 Villas</div>
+            <div class="prop-feat"><svg viewBox="0 0 24 24"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/></svg>980 m²</div>
+          </div>
+        </div>
+      </div>
+      <!-- Card 3 -->
+      <div class="prop-card" data-type="residential">
+        <div class="prop-img-wrap">
+          <div class="prop-badge" style="background:#7c5cfc;color:#fff">High Yield</div>
+          <button class="prop-fav" onclick="toggleFav(this)">
+            <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </button>
+          <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=700&q=80&auto=format&fit=crop" alt="Sky Residences" loading="lazy">
+        </div>
+        <div class="prop-body">
+          <div class="prop-loc"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Pejë, Kosovo</div>
+          <div class="prop-name">Dukagjin Sky Tower</div>
+          <div class="prop-row">
+            <div class="prop-price">€1,450,000</div>
+            <div class="prop-roi">ROI 18.1%</div>
+          </div>
+          <div class="prop-features">
+            <div class="prop-feat"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>Commercial</div>
+            <div class="prop-feat"><svg viewBox="0 0 24 24"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/></svg>2,800 m²</div>
+          </div>
+        </div>
+      </div>
+      <!-- Card 4 -->
+      <div class="prop-card" data-type="commercial">
+        <div class="prop-img-wrap">
+          <button class="prop-fav" onclick="toggleFav(this)">
+            <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </button>
+          <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=700&q=80&auto=format&fit=crop" alt="Luxury Modern Villa" loading="lazy">
+        </div>
+        <div class="prop-body">
+          <div class="prop-loc"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Gjilan, Kosovo</div>
+          <div class="prop-name">Gjilan Modern Residences</div>
+          <div class="prop-row">
+            <div class="prop-price">€640,000</div>
+            <div class="prop-roi">ROI 11.3%</div>
+          </div>
+          <div class="prop-features">
+            <div class="prop-feat"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>24 Units</div>
+            <div class="prop-feat"><svg viewBox="0 0 24 24"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/></svg>1,400 m²</div>
+          </div>
+        </div>
+      </div>
+      <!-- Card 5 -->
+      <div class="prop-card" data-type="villa">
+        <div class="prop-img-wrap">
+          <div class="prop-badge new">New</div>
+          <button class="prop-fav" onclick="toggleFav(this)">
+            <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </button>
+          <img src="https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?w=700&q=80&auto=format&fit=crop" alt="Mediterranean Villa" loading="lazy">
+        </div>
+        <div class="prop-body">
+          <div class="prop-loc"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Mitrovicë, Kosovo</div>
+          <div class="prop-name">Northern Garden Villas</div>
+          <div class="prop-row">
+            <div class="prop-price">€520,000</div>
+            <div class="prop-roi">ROI 13.5%</div>
+          </div>
+          <div class="prop-features">
+            <div class="prop-feat"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>8 Villas</div>
+            <div class="prop-feat"><svg viewBox="0 0 24 24"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/></svg>650 m²</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="view-all-wrap reveal">
+      <a href="#contact" class="btn-secondary">View All 13 Properties →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── SEARCH & FILTER ── -->
+<section id="search" class="sec">
+  <div class="sec-max">
+    <div class="reveal">
+      <div class="sec-tag">Smart Search</div>
+      <h2 class="sec-h" style="margin-bottom:36px">Find Your <em>Ideal Investment</em></h2>
+    </div>
+    <div class="search-box reveal">
+      <div class="search-grid">
+        <div class="sf-group">
+          <label>City</label>
+          <select><option value="">All Cities</option><option>Prishtinë</option><option>Prizren</option><option>Pejë</option><option>Gjilan</option><option>Mitrovicë</option><option>Ferizaj</option></select>
+        </div>
+        <div class="sf-group">
+          <label>Property Type</label>
+          <select><option value="">All Types</option><option>Residential</option><option>Commercial</option><option>Mixed-Use</option><option>Villa / Luxury</option><option>Land</option></select>
+        </div>
+        <div class="sf-group">
+          <label>Budget</label>
+          <select><option value="">Any Budget</option><option>€50K – €200K</option><option>€200K – €500K</option><option>€500K – €1M</option><option>€1M – €5M</option><option>€5M+</option></select>
+        </div>
+        <div class="sf-group">
+          <label>Min ROI %</label>
+          <select><option value="">Any ROI</option><option>8%+</option><option>10%+</option><option>12%+</option><option>15%+</option><option>18%+</option></select>
+        </div>
+        <div class="sf-group">
+          <label>Min Size (m²)</label>
+          <input type="text" placeholder="e.g. 500">
+        </div>
+        <div class="sf-group">
+          <label>Status</label>
+          <select><option value="">Any Status</option><option>Available Now</option><option>Off-Plan</option><option>Under Construction</option><option>Completed</option></select>
+        </div>
+      </div>
+      <button class="sf-btn" onclick="alert('Contact our team for personalized property matching. Call +383 44 123 456')">Search Properties →</button>
+    </div>
+  </div>
+</section>
+
+<!-- ── ROI CALCULATOR ── -->
+<section id="calculator" class="sec">
+  <div class="sec-max">
+    <div class="reveal">
+      <div class="sec-tag">Investment Calculator</div>
+      <h2 class="sec-h" style="margin-bottom:8px">Calculate Your <em>Returns</em></h2>
+      <p class="sec-sub">Get an instant estimate of your investment performance based on real portfolio data.</p>
+    </div>
+    <div class="calc-grid">
+      <div class="calc-inputs reveal">
+        <div class="calc-row">
+          <label>Investment Amount</label>
+          <div class="calc-val" id="invest-val">€150,000</div>
+          <input type="range" min="50000" max="2000000" step="10000" value="150000" id="invest-slider" oninput="updateCalc()">
+        </div>
+        <div class="calc-row">
+          <label>Expected Annual ROI (%)</label>
+          <div class="calc-val" id="roi-val">14.2%</div>
+          <input type="range" min="6" max="22" step="0.2" value="14.2" id="roi-slider" oninput="updateCalc()">
+        </div>
+        <div class="calc-row">
+          <label>Investment Period (Years)</label>
+          <div class="calc-val" id="years-val">5 Years</div>
+          <input type="range" min="1" max="20" step="1" value="5" id="years-slider" oninput="updateCalc()">
+        </div>
+        <div class="calc-row">
+          <label>Rental Yield (%)</label>
+          <div class="calc-val" id="yield-val">6.8%</div>
+          <input type="range" min="3" max="12" step="0.2" value="6.8" id="yield-slider" oninput="updateCalc()">
+        </div>
+      </div>
+      <div class="calc-results reveal d2">
+        <div class="calc-result-main" id="calc-total">€0</div>
+        <div class="calc-result-label">Projected Total Return</div>
+        <div class="calc-breakdown">
+          <div class="calc-br-row"><span class="calc-br-label">Initial Investment</span><span class="calc-br-val" id="calc-initial">€0</span></div>
+          <div class="calc-br-row"><span class="calc-br-label">Capital Appreciation</span><span class="calc-br-val" id="calc-appreciation">€0</span></div>
+          <div class="calc-br-row"><span class="calc-br-label">Rental Income Total</span><span class="calc-br-val" id="calc-rental">€0</span></div>
+          <div class="calc-br-row"><span class="calc-br-label">Monthly Passive Income</span><span class="calc-br-val" id="calc-monthly">€0/mo</span></div>
+          <div class="calc-br-row"><span class="calc-br-label">Net Profit</span><span class="calc-br-val" id="calc-profit" style="color:var(--gold);font-weight:500">€0</span></div>
+        </div>
+        <button class="calc-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Get a Custom Investment Plan →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── INVESTMENT INTELLIGENCE ── -->
+<section id="investment" class="sec">
+  <div class="sec-max">
+    <div class="inv-hero">
+      <div class="reveal">
+        <div class="sec-tag">Investment Intelligence</div>
+        <h2 class="sec-h">Data-Driven<br><em>Growth</em></h2>
+        <p class="sec-sub" style="margin-top:16px">Every investment backed by real market data, transparent projections, and measurable outcomes. We don't promise — we deliver.</p>
+      </div>
+      <div class="reveal d2">
+        <div class="chart-wrap">
+          <div class="chart-title">Portfolio Growth Index — 2018 to 2024</div>
+          <div class="chart-bars" id="chart-bars">
+            <div class="c-bar" data-year="2018" data-val="+32%" style="height:28%;background:rgba(201,168,76,.25)"><div class="c-bar-tip">+32%</div></div>
+            <div class="c-bar" data-year="2019" data-val="+41%" style="height:36%;background:rgba(201,168,76,.3)"><div class="c-bar-tip">+41%</div></div>
+            <div class="c-bar" data-year="2020" data-val="+38%" style="height:33%;background:rgba(201,168,76,.32)"><div class="c-bar-tip">+38%</div></div>
+            <div class="c-bar" data-year="2021" data-val="+58%" style="height:50%;background:rgba(201,168,76,.45)"><div class="c-bar-tip">+58%</div></div>
+            <div class="c-bar" data-year="2022" data-val="+72%" style="height:62%;background:rgba(201,168,76,.55)"><div class="c-bar-tip">+72%</div></div>
+            <div class="c-bar" data-year="2023" data-val="+84%" style="height:74%;background:rgba(201,168,76,.7)"><div class="c-bar-tip">+84%</div></div>
+            <div class="c-bar" data-year="2024" data-val="+97%" style="height:100%;background:var(--gold)"><div class="c-bar-tip">+97%</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="inv-numbers reveal">
+      <div class="inv-num-cell">
+        <div class="inv-big" data-target="14.2">0</div>
+        <div class="inv-lbl">% Annual ROI Average</div>
+        <div class="inv-desc">Above-market returns, outperforming the regional average by 2.3×.</div>
+        <div class="inv-prog"><div class="inv-prog-fill" data-w="78"></div></div>
+      </div>
+      <div class="inv-num-cell">
+        <div class="inv-big" data-target="3.2">0</div>
+        <div class="inv-lbl">k EUR Monthly Passive Income</div>
+        <div class="inv-desc">Consistent monthly income from day one of property completion.</div>
+        <div class="inv-prog"><div class="inv-prog-fill" data-w="62"></div></div>
+      </div>
+      <div class="inv-num-cell">
+        <div class="inv-big" data-target="287">0</div>
+        <div class="inv-lbl">% Portfolio Growth Since 2018</div>
+        <div class="inv-desc">Long-term investors have seen near 3× appreciation on capital.</div>
+        <div class="inv-prog"><div class="inv-prog-fill" data-w="95"></div></div>
+      </div>
+      <div class="inv-num-cell">
+        <div class="inv-big" data-target="24">0</div>
+        <div class="inv-lbl">Months to Full ROI Recovery</div>
+        <div class="inv-desc">Streamlined process ensures your capital works from day one.</div>
+        <div class="inv-prog"><div class="inv-prog-fill" data-w="45"></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PROCESS ── -->
+<section id="process" class="sec">
+  <div class="sec-max">
+    <div style="text-align:center;max-width:560px;margin:0 auto" class="reveal">
+      <div class="sec-tag" style="justify-content:center">How It Works</div>
+      <h2 class="sec-h" style="text-align:center">From Interest to<br><em>Income in 4 Steps</em></h2>
+    </div>
+    <div class="process-steps" id="process-steps">
+      <div class="proc-step" data-step="1">
+        <div class="proc-left reveal">
+          <div class="proc-h">Book a Consultation</div>
+          <div class="proc-p">Schedule a private 30-minute call with one of our senior investment advisors. We'll map your financial goals, risk profile, and ideal investment horizon with no obligation.</div>
+        </div>
+        <div class="proc-center"><div class="proc-num">01</div><div class="proc-connector"></div></div>
+        <div class="proc-right reveal d2"></div>
+      </div>
+      <div class="proc-step" data-step="2">
+        <div class="proc-left reveal d1"></div>
+        <div class="proc-center"><div class="proc-num">02</div><div class="proc-connector"></div></div>
+        <div class="proc-right reveal">
+          <div class="proc-h">Receive Your Curated Portfolio</div>
+          <div class="proc-p">Within 48 hours, you'll receive a bespoke selection of properties matching your criteria — complete with verified ROI projections, legal status, and full due diligence reports.</div>
+        </div>
+      </div>
+      <div class="proc-step" data-step="3">
+        <div class="proc-left reveal">
+          <div class="proc-h">Secure Your Investment</div>
+          <div class="proc-p">Choose your preferred property. Our legal team handles the entire acquisition process — ownership registration, contracts, and fund transfer through secure escrow. Fully transparent, zero hidden costs.</div>
+        </div>
+        <div class="proc-center"><div class="proc-num">03</div><div class="proc-connector"></div></div>
+        <div class="proc-right reveal d2"></div>
+      </div>
+      <div class="proc-step" data-step="4">
+        <div class="proc-left reveal d1"></div>
+        <div class="proc-center"><div class="proc-num">04</div></div>
+        <div class="proc-right reveal">
+          <div class="proc-h">Watch Your Wealth Grow</div>
+          <div class="proc-p">Receive monthly income reports, ROI dashboards, and portfolio analytics. Our full-service management team handles tenants, maintenance, and exit strategy when you're ready.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── GALLERY ── -->
+<section id="gallery" class="sec">
+  <div class="sec-max">
+    <div class="reveal">
+      <div class="sec-tag">Property Gallery</div>
+      <h2 class="sec-h" style="margin-bottom:0">Luxury Defined in <em>Every Detail</em></h2>
+    </div>
+    <div class="gallery-grid reveal">
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=900&q=80&auto=format&fit=crop" alt="Luxury Villa Interior" loading="lazy">
+        <div class="gallery-plus"><span>View Gallery</span></div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=500&q=80&auto=format&fit=crop" alt="Modern Interior" loading="lazy">
+        <div class="gallery-plus"><span>View</span></div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=500&q=80&auto=format&fit=crop" alt="Villa Pool" loading="lazy">
+        <div class="gallery-plus"><span>View</span></div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=500&q=80&auto=format&fit=crop" alt="Luxury Kitchen" loading="lazy">
+        <div class="gallery-plus"><span>View</span></div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1578683010236-d716f9a3f461?w=500&q=80&auto=format&fit=crop" alt="Master Bedroom" loading="lazy">
+        <div class="gallery-plus"><span>View</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── WHY US ── -->
+<section id="why" class="sec">
+  <div class="sec-max">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,5vw,80px);margin-bottom:clamp(40px,6vw,70px);align-items:end" class="reveal">
+      <div>
+        <div class="sec-tag">Our Advantage</div>
+        <h2 class="sec-h" style="margin-bottom:0">Why Investors <em>Choose Us</em></h2>
+      </div>
+      <p class="sec-sub">We combine institutional-grade investment discipline with deep local market knowledge to deliver results you can measure.</p>
+    </div>
+    <div class="why-grid reveal">
+      <div class="why-card">
+        <div class="why-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <div class="why-h">Verified & Legally Secured</div>
+        <div class="why-p">Every property undergoes full legal due diligence. Registered ownership, secure escrow, and transparent contracts for every transaction.</div>
+        <div class="why-link">Learn More <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon"><svg viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div>
+        <div class="why-h">Market-Leading Returns</div>
+        <div class="why-p">14.2% average annual ROI — consistently 2.3× above regional benchmarks. Our algorithm targets only high-growth corridors.</div>
+        <div class="why-link">View Performance <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+        <div class="why-h">48hr Investment Onboarding</div>
+        <div class="why-p">From first consultation to signed ownership — our streamlined process gets your capital working in as little as 48 hours.</div>
+        <div class="why-link">Our Process <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <div class="why-h">Dedicated Expert Team</div>
+        <div class="why-p">40+ specialists — attorneys, architects, financial advisors, and property managers — committed to your portfolio's success.</div>
+        <div class="why-link">Meet the Team <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+        <div class="why-h">Full Portfolio Management</div>
+        <div class="why-p">From acquisition and renovation to tenant management and exit strategy — we handle everything while you collect returns.</div>
+        <div class="why-link">Full Service <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
+        <div class="why-h">Global Network, Local Expertise</div>
+        <div class="why-p">Connections across European investment funds combined with unmatched local knowledge — positioning you at the forefront of regional opportunity.</div>
+        <div class="why-link">Our Network <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── TEAM ── -->
+<section id="team" class="sec">
+  <div class="sec-max">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:20px" class="reveal">
+      <div>
+        <div class="sec-tag">Our People</div>
+        <h2 class="sec-h" style="margin-bottom:0">The Experts <em>Behind Your Returns</em></h2>
+      </div>
+    </div>
+    <div class="team-grid reveal">
+      <div class="team-card">
+        <img class="team-img" src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&q=80&auto=format&fit=crop&facepad=3" alt="CEO" loading="lazy">
+        <div class="team-body">
+          <div class="team-name">Artan Berisha</div>
+          <div class="team-role">CEO & Founding Partner</div>
+          <div class="team-bio">20 years in real estate investment across Balkans and Western Europe. Former MD at Colliers International.</div>
+        </div>
+      </div>
+      <div class="team-card">
+        <img class="team-img" src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&q=80&auto=format&fit=crop&facepad=3" alt="CIO" loading="lazy">
+        <div class="team-body">
+          <div class="team-name">Vjosa Kelmendi</div>
+          <div class="team-role">Chief Investment Officer</div>
+          <div class="team-bio">Former Goldman Sachs analyst. Specializes in emerging market real estate funds and risk modeling.</div>
+        </div>
+      </div>
+      <div class="team-card">
+        <img class="team-img" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&q=80&auto=format&fit=crop&facepad=3" alt="Head of Development" loading="lazy">
+        <div class="team-body">
+          <div class="team-name">Besnik Hoxha</div>
+          <div class="team-role">Head of Development</div>
+          <div class="team-bio">Architect and developer with 15+ delivered luxury projects across Kosovo and Albania.</div>
+        </div>
+      </div>
+      <div class="team-card">
+        <img class="team-img" src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&q=80&auto=format&fit=crop&facepad=3" alt="Legal Director" loading="lazy">
+        <div class="team-body">
+          <div class="team-name">Drita Haliti</div>
+          <div class="team-role">Legal & Compliance Director</div>
+          <div class="team-bio">International real estate attorney. Ensures every investment is fully protected and legally watertight.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── TESTIMONIALS ── -->
+<section id="testimonials" class="sec">
+  <div class="sec-max">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:20px">
+      <div class="reveal">
+        <div class="sec-tag">Investor Stories</div>
+        <h2 class="sec-h" style="margin-bottom:0">Trusted by <em>Discerning Investors</em></h2>
+      </div>
+      <div class="testi-nav reveal d2">
+        <button class="testi-nav-btn" id="testi-prev" onclick="moveTestimonials(-1)">←</button>
+        <button class="testi-nav-btn" id="testi-next" onclick="moveTestimonials(1)">→</button>
+        <div class="testi-progress"><div class="testi-progress-fill" id="testi-fill"></div></div>
+      </div>
+    </div>
+    <div class="testi-track-wrap">
+      <div class="testi-track reveal" id="testi-track">
+        <div class="testi-card">
+          <div class="testi-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+          <div class="testi-roi-badge">+16.8% ROI</div>
+          <div class="testi-q">Patundshmëri Invest fundamentally changed how I approach real estate. The transparency, the process, the returns — nothing else in the market compares. I've doubled my investment.</div>
+          <div class="testi-divider"></div>
+          <div class="testi-author">Arben Krasniqi</div>
+          <div class="testi-role">CEO, Krasniqi Group · Investor since 2019</div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+          <div class="testi-roi-badge">+14.2% ROI</div>
+          <div class="testi-q">I've invested in real estate across three continents. This team brings institutional-grade discipline to a market with frontier-level upside. A rare and exceptional combination.</div>
+          <div class="testi-divider"></div>
+          <div class="testi-author">Mirela Berisha</div>
+          <div class="testi-role">Private Equity Director · Investor since 2021</div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+          <div class="testi-roi-badge">+18.4% ROI</div>
+          <div class="testi-q">Capital Tower delivered beyond projections. Monthly income began on schedule, management is completely hands-off for me, and my capital has already appreciated 40%.</div>
+          <div class="testi-divider"></div>
+          <div class="testi-author">Florin Zeqiri</div>
+          <div class="testi-role">Tech Entrepreneur · Investor since 2020</div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+          <div class="testi-roi-badge">+12.8% ROI</div>
+          <div class="testi-q">The legal team gave me complete confidence. Every document verified, every title checked. For someone investing internationally, that peace of mind is worth everything.</div>
+          <div class="testi-divider"></div>
+          <div class="testi-author">Donika Kola</div>
+          <div class="testi-role">Swiss-Albanian Investor · Investor since 2022</div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+          <div class="testi-roi-badge">+15.6% ROI</div>
+          <div class="testi-q">What sets them apart is the data. Every recommendation comes with real numbers, comparable sales, and honest risk assessments. I invested with confidence and have not been disappointed.</div>
+          <div class="testi-divider"></div>
+          <div class="testi-author">Enis Mustafa</div>
+          <div class="testi-role">Real Estate Fund Manager · Investor since 2020</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── MAP ── -->
+<section id="map-section" class="sec" style="padding-top:0">
+  <div class="sec-max">
+    <div class="reveal">
+      <div class="sec-tag">Coverage</div>
+      <h2 class="sec-h" style="margin-bottom:0">Active Markets <em>Across Kosovo</em></h2>
+    </div>
+    <div class="map-wrap">
+      <div class="map-grid-bg"></div>
+      <!-- Kosovo map outline subtle SVG -->
+      <svg style="position:absolute;inset:0;width:100%;height:100%;opacity:.06" viewBox="0 0 800 500" preserveAspectRatio="xMidYMid meet">
+        <path d="M180 110 L240 90 L310 100 L370 85 L430 95 L510 88 L580 108 L620 140 L635 185 L620 240 L595 295 L560 345 L520 385 L470 400 L410 412 L345 405 L285 392 L245 365 L210 330 L188 285 L178 235 L180 175 Z" fill="none" stroke="#c9a84c" stroke-width="2" stroke-linejoin="round"/>
+      </svg>
+      <!-- Pins -->
+      <div class="map-pin" style="left:46%;top:44%">
+        <div class="pin-bubble"><strong>Prishtinë</strong><span>5 Properties · €4.2M</span></div>
+        <div class="pin-stem"></div><div class="pin-dot"></div>
+      </div>
+      <div class="map-pin" style="left:28%;top:70%">
+        <div class="pin-bubble"><strong>Prizren</strong><span>3 Properties · €1.8M</span></div>
+        <div class="pin-stem"></div><div class="pin-dot"></div>
+      </div>
+      <div class="map-pin" style="left:19%;top:46%">
+        <div class="pin-bubble"><strong>Pejë</strong><span>2 Properties · €2.1M</span></div>
+        <div class="pin-stem"></div><div class="pin-dot"></div>
+      </div>
+      <div class="map-pin" style="left:67%;top:54%">
+        <div class="pin-bubble"><strong>Gjilan</strong><span>2 Properties · €1.1M</span></div>
+        <div class="pin-stem"></div><div class="pin-dot"></div>
+      </div>
+      <div class="map-pin" style="left:40%;top:18%">
+        <div class="pin-bubble"><strong>Mitrovicë</strong><span>1 Property · €680K</span></div>
+        <div class="pin-stem"></div><div class="pin-dot"></div>
+      </div>
+      <!-- Legend -->
+      <div class="map-legend">
+        <div class="legend-item"><div class="legend-dot" style="background:var(--gold)"></div>Active Property</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#7c5cfc"></div>Off-Plan Project</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#3aaa6e"></div>Sold / Exited</div>
+      </div>
+      <div class="map-stat-badge">
+        <div class="n">13</div>
+        <div class="l">Active Properties</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── NEWS / INSIGHTS ── -->
+<section id="news" class="sec">
+  <div class="sec-max">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:20px;margin-bottom:clamp(36px,5vw,60px)">
+      <div class="reveal">
+        <div class="sec-tag">Market Intelligence</div>
+        <h2 class="sec-h" style="margin-bottom:0">Insights &amp; <em>Market Reports</em></h2>
+      </div>
+      <a href="#" class="btn-secondary reveal d2">View All Reports →</a>
+    </div>
+    <div class="news-grid reveal">
+      <div class="news-card">
+        <img class="news-img" src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=600&q=80&auto=format&fit=crop" alt="Kosovo Real Estate Market 2025" loading="lazy">
+        <div class="news-body">
+          <div class="news-cat">Market Report</div>
+          <div class="news-h">Kosovo Real Estate Market Outlook 2025: 18% YoY Price Growth Expected</div>
+          <div class="news-excerpt">New infrastructure investments and EU membership prospects are driving unprecedented demand in Prishtinë's premium districts.</div>
+          <div class="news-meta">March 2025 · 5 min read</div>
+        </div>
+      </div>
+      <div class="news-card">
+        <img class="news-img" src="https://images.unsplash.com/photo-1460472178825-e5240623afd5?w=600&q=80&auto=format&fit=crop" alt="Investment Strategy" loading="lazy">
+        <div class="news-body">
+          <div class="news-cat">Investment Strategy</div>
+          <div class="news-h">Why Diaspora Investors Are Returning to Kosovo Real Estate in Record Numbers</div>
+          <div class="news-excerpt">Favorable currency exchange rates, tax incentives, and strong rental demand make Kosovo's market uniquely attractive.</div>
+          <div class="news-meta">February 2025 · 7 min read</div>
+        </div>
+      </div>
+      <div class="news-card">
+        <img class="news-img" src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&q=80&auto=format&fit=crop" alt="New Development" loading="lazy">
+        <div class="news-body">
+          <div class="news-cat">New Development</div>
+          <div class="news-h">Capital Tower Phase II: 48 Premium Units Now Open for Pre-Investment</div>
+          <div class="news-excerpt">Following Phase I's 16.4% ROI, our flagship Prishtinë tower opens its second phase exclusively to existing investors first.</div>
+          <div class="news-meta">January 2025 · 4 min read</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA ── -->
+<section id="cta">
+  <div class="cta-glow"></div>
+  <div class="cta-border"></div>
+  <div class="reveal">
+    <div class="sec-tag" style="justify-content:center">Begin Your Journey</div>
+    <h2 class="cta-h">Start Building<br><em>Wealth Today</em></h2>
+    <p class="cta-sub">Join 340+ investors who trust Patundshmëri Invest to grow their wealth. Minimum investment from €50,000. Results from day one.</p>
+    <div style="display:flex;justify-content:center;gap:14px;flex-wrap:wrap">
+      <a href="#contact" class="btn-primary">Schedule a Consultation <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      <a href="#calculator" class="btn-secondary">Calculate My Returns</a>
+    </div>
+    <div class="cta-trust">
+      <div class="cta-trust-item"><div class="cta-trust-n">€50K</div><div class="cta-trust-l">Min. Entry</div></div>
+      <div class="cta-trust-item"><div class="cta-trust-n">14.2%</div><div class="cta-trust-l">Avg. ROI</div></div>
+      <div class="cta-trust-item"><div class="cta-trust-n">48hr</div><div class="cta-trust-l">Onboarding</div></div>
+      <div class="cta-trust-item"><div class="cta-trust-n">100%</div><div class="cta-trust-l">Legal Security</div></div>
+      <div class="cta-trust-item"><div class="cta-trust-n">8yr</div><div class="cta-trust-l">Track Record</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CONTACT ── -->
+<section id="contact" class="sec">
+  <div class="sec-max">
+    <div class="reveal">
+      <div class="sec-tag">Get In Touch</div>
+      <h2 class="sec-h" style="margin-bottom:0">Let's Build Your <em>Portfolio</em></h2>
+    </div>
+    <div class="contact-wrap">
+      <div class="contact-left reveal">
+        <h3>Ready to invest in Kosovo's most promising real estate?</h3>
+        <p>Our senior investment advisors are available to create a tailored strategy aligned with your goals. Private, confidential, and absolutely no obligation.</p>
+        <div class="contact-detail">
+          <div class="c-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div><div class="c-detail-label">Office</div><div class="c-detail-val">Rr. Nënë Tereza, Nr. 28, Prishtinë 10000</div></div>
+        </div>
+        <div class="contact-detail">
+          <div class="c-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+          <div><div class="c-detail-label">Email</div><div class="c-detail-val">invest@patundshmeeri.com</div></div>
+        </div>
+        <div class="contact-detail">
+          <div class="c-icon"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+          <div><div class="c-detail-label">Phone / WhatsApp</div><div class="c-detail-val">+383 44 123 456</div></div>
+        </div>
+        <div class="contact-hours">
+          <div class="hours-title">Office Hours</div>
+          <div class="hours-row"><span>Monday – Friday</span><span>09:00 – 18:00</span></div>
+          <div class="hours-row"><span>Saturday</span><span>10:00 – 14:00</span></div>
+          <div class="hours-row"><span>Sunday</span><span>By Appointment</span></div>
+        </div>
+      </div>
+      <div class="reveal d2" id="contact-form-wrap">
+        <div class="form-row">
+          <div class="fg"><label>First Name</label><input type="text" placeholder="Arben" id="cf-fname"></div>
+          <div class="fg"><label>Last Name</label><input type="text" placeholder="Krasniqi" id="cf-lname"></div>
+        </div>
+        <div class="form-row">
+          <div class="fg"><label>Email Address</label><input type="email" placeholder="arben@email.com" id="cf-email"></div>
+          <div class="fg"><label>Phone / WhatsApp</label><input type="tel" placeholder="+383 44 000 000" id="cf-phone"></div>
+        </div>
+        <div class="form-row">
+          <div class="fg"><label>Investment Budget</label>
+            <select id="cf-budget">
+              <option value="">Select Range</option>
+              <option>€50,000 – €100,000</option>
+              <option>€100,000 – €250,000</option>
+              <option>€250,000 – €500,000</option>
+              <option>€500,000 – €1,000,000</option>
+              <option>€1,000,000+</option>
+            </select>
+          </div>
+          <div class="fg"><label>Investment Goal</label>
+            <select id="cf-goal">
+              <option value="">Select Goal</option>
+              <option>Passive Income / Rental Yield</option>
+              <option>Capital Appreciation</option>
+              <option>Portfolio Diversification</option>
+              <option>Long-Term Wealth</option>
+              <option>Short-Term Flip</option>
+            </select>
+          </div>
+        </div>
+        <div class="fg"><label>How Did You Hear About Us?</label>
+          <select>
+            <option value="">Select</option>
+            <option>Referral from Investor</option>
+            <option>Social Media</option>
+            <option>Google Search</option>
+            <option>Press / Media</option>
+            <option>Event / Conference</option>
+          </select>
+        </div>
+        <div class="fg"><label>Message</label><textarea placeholder="Tell us about your investment goals, preferred properties, or any questions you have..." id="cf-msg"></textarea></div>
+        <button class="form-submit" onclick="submitForm()">
+          Send Inquiry <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+        <div class="form-success" id="form-success">
+          <h4>Thank You!</h4>
+          <p>We've received your inquiry and will contact you within 24 hours to discuss your investment goals.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-main">
+    <div>
+      <div class="footer-brand-name">Patundshmëri<span> Invest</span></div>
+      <div class="footer-desc">Kosovo's premier real estate investment firm. Building wealth through exceptional properties, transparent returns, and institutional-grade management since 2017.</div>
+      <div class="footer-socials">
+        <div class="soc-btn" title="LinkedIn"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></div>
+        <div class="soc-btn" title="Instagram"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></div>
+        <div class="soc-btn" title="Facebook"><svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></div>
+        <div class="soc-btn" title="WhatsApp"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></div>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h5>Properties</h5>
+      <ul><li><a href="#">Residential</a></li><li><a href="#">Commercial</a></li><li><a href="#">Mixed-Use</a></li><li><a href="#">Off-Plan</a></li><li><a href="#">Luxury Villas</a></li></ul>
+    </div>
+    <div class="footer-col">
+      <h5>Investment</h5>
+      <ul><li><a href="#calculator">ROI Calculator</a></li><li><a href="#">Investment Guide</a></li><li><a href="#">Market Reports</a></li><li><a href="#">Portfolio View</a></li><li><a href="#">Investor Login</a></li></ul>
+    </div>
+    <div class="footer-col">
+      <h5>Company</h5>
+      <ul><li><a href="#why">About Us</a></li><li><a href="#team">Our Team</a></li><li><a href="#">Careers</a></li><li><a href="#news">News</a></li><li><a href="#contact">Contact</a></li></ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2025 Patundshmëri Invest. All rights reserved. Prishtinë, Kosovë.</div>
+    <div class="footer-legal">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+      <a href="#">Investment Disclaimer</a>
+      <a href="#">Cookie Policy</a>
+    </div>
+  </div>
+</footer>
+
+<!-- FLOATING MOBILE CTA -->
+<div class="float-cta" id="float-cta">
+  <div class="float-cta-text">
+    <strong>Ready to Invest?</strong>14.2% avg. annual ROI
+  </div>
+  <button class="float-cta-btn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Start Now</button>
+</div>
+
+<script>
+// ── LOADER ────────────────────────────────────────────────
+;(()=>{
+  const bar = document.getElementById('ld-bar');
+  const num = document.getElementById('ld-num');
+  let p = 0;
+  const iv = setInterval(()=>{
+    p = Math.min(p + Math.random()*18 + 2, 100);
+    bar.style.width = p + '%';
+    num.textContent = Math.floor(p) + '%';
+    if(p >= 100){
+      clearInterval(iv);
+      setTimeout(()=>{
+        document.getElementById('loader').classList.add('out');
+      }, 180);
+    }
+  }, 80);
+})();
+
+// ── NAV ───────────────────────────────────────────────────
+const nav = document.getElementById('nav');
+let lastY = 0;
+window.addEventListener('scroll', ()=>{
+  const y = window.scrollY;
+  nav.classList.toggle('solid', y > 40);
+  lastY = y;
+}, {passive:true});
+
+// ── MOBILE MENU ───────────────────────────────────────────
+function toggleMenu(){
+  const b = document.getElementById('burger');
+  const m = document.getElementById('mob-menu');
+  b.classList.toggle('open');
+  m.classList.toggle('open');
+  document.body.style.overflow = m.classList.contains('open') ? 'hidden' : '';
+}
+function closeMenu(){
+  document.getElementById('burger').classList.remove('open');
+  document.getElementById('mob-menu').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+// ── HERO SLIDESHOW ────────────────────────────────────────
+let curSlide = 0;
+const slides = document.querySelectorAll('.hero-slide');
+const dots = document.querySelectorAll('.hero-dot');
+const slideCounter = document.getElementById('slide-cur');
+let slideTimer;
+
+function goSlide(n){
+  slides[curSlide].classList.remove('active');
+  dots[curSlide].classList.remove('active');
+  curSlide = (n + slides.length) % slides.length;
+  slides[curSlide].classList.add('active');
+  dots[curSlide].classList.add('active');
+  slideCounter.textContent = String(curSlide+1).padStart(2,'0');
+  clearInterval(slideTimer);
+  slideTimer = setInterval(()=>goSlide(curSlide+1), 5500);
+}
+slideTimer = setInterval(()=>goSlide(curSlide+1), 5500);
+
+// ── SCROLL REVEAL ─────────────────────────────────────────
+const ro = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){ e.target.classList.add('on'); ro.unobserve(e.target); }
+  });
+}, {threshold:0.08, rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
+
+// ── COUNT UP ──────────────────────────────────────────────
+function animCount(el, target, suffix, decimals, duration=1800){
+  const start = performance.now();
+  function step(now){
+    const t = Math.min((now-start)/duration, 1);
+    const ease = 1 - Math.pow(1-t, 3);
+    el.textContent = (target*ease).toFixed(decimals) + suffix;
+    if(t<1) requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
+}
+const countObs = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(!e.isIntersecting) return;
+    const el = e.target;
+    const raw = el.dataset.count || el.dataset.target;
+    if(!raw) return;
+    const target = parseFloat(raw);
+    const suffix = el.dataset.suffix || (raw.includes('.')? '%':'');
+    const decimals = raw.includes('.') ? 1 : 0;
+    animCount(el, target, suffix, decimals);
+    countObs.unobserve(el);
+  });
+},{threshold:0.5});
+document.querySelectorAll('[data-count],[data-target]').forEach(el=>countObs.observe(el));
+
+// ── PROGRESS BARS ─────────────────────────────────────────
+const pbObs = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(!e.isIntersecting) return;
+    const fill = e.target.querySelector('.inv-prog-fill');
+    if(fill) setTimeout(()=>fill.style.width=fill.dataset.w+'%', 200);
+    pbObs.unobserve(e.target);
+  });
+},{threshold:0.3});
+document.querySelectorAll('.inv-num-cell').forEach(el=>pbObs.observe(el));
+
+// ── ROI CALCULATOR ────────────────────────────────────────
+function fmt(n){ return '€'+Math.round(n).toLocaleString(); }
+function updateCalc(){
+  const invest = parseFloat(document.getElementById('invest-slider').value);
+  const roi = parseFloat(document.getElementById('roi-slider').value)/100;
+  const years = parseInt(document.getElementById('years-slider').value);
+  const yield_ = parseFloat(document.getElementById('yield-slider').value)/100;
+
+  document.getElementById('invest-val').textContent = fmt(invest);
+  document.getElementById('roi-val').textContent = (roi*100).toFixed(1)+'%';
+  document.getElementById('years-val').textContent = years+' Year'+(years>1?'s':'');
+  document.getElementById('yield-val').textContent = (yield_*100).toFixed(1)+'%';
+
+  const appreciated = invest * Math.pow(1+roi, years);
+  const capitalGain = appreciated - invest;
+  const totalRental = invest * yield_ * years;
+  const total = appreciated + totalRental;
+  const profit = total - invest;
+  const monthly = (invest * yield_) / 12;
+
+  document.getElementById('calc-total').textContent = fmt(total);
+  document.getElementById('calc-initial').textContent = fmt(invest);
+  document.getElementById('calc-appreciation').textContent = fmt(capitalGain);
+  document.getElementById('calc-rental').textContent = fmt(totalRental);
+  document.getElementById('calc-monthly').textContent = fmt(monthly)+'/mo';
+  document.getElementById('calc-profit').textContent = fmt(profit);
+}
+updateCalc();
+
+// ── PROPERTY FILTER ───────────────────────────────────────
+function filterProps(btn, type){
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.prop-card').forEach(card=>{
+    if(type==='all' || card.dataset.type===type){
+      card.style.display='block';
+    } else {
+      card.style.display='none';
+    }
+  });
+}
+
+// ── FAVORITES ─────────────────────────────────────────────
+function toggleFav(btn){
+  btn.classList.toggle('active');
+  event.stopPropagation();
+}
+
+// ── TESTIMONIAL SLIDER ────────────────────────────────────
+let testiOffset = 0;
+function moveTestimonials(dir){
+  const track = document.getElementById('testi-track');
+  const cards = track.querySelectorAll('.testi-card');
+  const cardW = cards[0].offsetWidth + 20;
+  const max = Math.max(0, cards.length - getTestiVisible()) * cardW;
+  testiOffset = Math.max(0, Math.min(testiOffset + dir * cardW, max));
+  track.style.transform = `translateX(-${testiOffset}px)`;
+  const fill = document.getElementById('testi-fill');
+  fill.style.width = (testiOffset/Math.max(max,1)*100)+'%';
+}
+function getTestiVisible(){ return window.innerWidth > 900 ? 3 : window.innerWidth > 600 ? 2 : 1; }
+
+// ── CONTACT FORM ──────────────────────────────────────────
+function submitForm(){
+  const fname = document.getElementById('cf-fname').value.trim();
+  const email = document.getElementById('cf-email').value.trim();
+  if(!fname || !email){
+    alert('Please fill in your name and email address.');
+    return;
+  }
+  document.querySelector('.form-submit').style.display='none';
+  document.getElementById('form-success').style.display='block';
+}
+
+// ── FLOATING CTA (MOBILE) ─────────────────────────────────
+const floatCta = document.getElementById('float-cta');
+window.addEventListener('scroll',()=>{
+  if(window.scrollY > window.innerHeight*0.5){
+    floatCta.style.transform = 'translateY(0)';
+  }
+},{passive:true});
+floatCta.style.transform = 'translateY(100%)';
+floatCta.style.transition = 'transform .5s var(--ease)';
+
+// ── PARALLAX HERO ─────────────────────────────────────────
+window.addEventListener('scroll',()=>{
+  const sy = window.scrollY;
+  if(sy < window.innerHeight){
+    const hc = document.querySelector('.hero-content');
+    if(hc){
+      hc.style.transform = `translateY(${sy*0.22}px)`;
+      hc.style.opacity = Math.max(0, 1 - sy/600);
+    }
+  }
+},{passive:true});
+
+// ── RESIZE ────────────────────────────────────────────────
+window.addEventListener('resize', ()=>{
+  testiOffset = 0;
+  document.getElementById('testi-track').style.transform = 'translateX(0)';
+});
+</script>
+</body>
+</html>
